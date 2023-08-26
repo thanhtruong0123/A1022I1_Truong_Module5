@@ -24,7 +24,7 @@ class Student extends Component {
     render() {
         return (
             <>
-                <table>
+                <table className={"table table-striped-columns"}>
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
