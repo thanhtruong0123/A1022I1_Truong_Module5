@@ -37,25 +37,25 @@ export function Contact() {
                     <Form>
                         <div className='mb-3'>
                             <label className='form-label' htmlFor='name'>Name</label>
-                            <Field type='text' className='form-control' id='name' name='name'></Field>
+                            <Field type='text' className='form-control' id='name' name='name' />
                             <ErrorMessage name="name" className="form-err" component='span'></ErrorMessage>
                         </div>
 
                         <div className='mb-3'>
                             <label className='form-label' htmlFor='email'>Email</label>
-                            <Field type='text' className='form-control' id='email' name='email'></Field>
+                            <Field type='text' className='form-control' id='email' name='email' />
                             <ErrorMessage name="email" className="form-err" component='span'></ErrorMessage>
                         </div>
 
                         <div className='mb-3'>
                             <label className='form-label' htmlFor='phone'>Phone</label>
-                            <Field type='text' className='form-control' id='phone' name='phone'></Field>
+                            <Field type='text' className='form-control' id='phone' name='phone' />
                             <ErrorMessage name="phone" className="form-err" component='span'></ErrorMessage>
                         </div>
                         
                         <div className='mb-3'>
                             <label className='form-label' htmlFor='message'>Message</label>
-                            <Field type='text' className='form-control' id='message' name='message'></Field>
+                            <Field type='text' className='form-control' id='message' name='message' />
                         </div>
                         
                         <button type='submit' className='btn btn-primary'>Submit</button>
