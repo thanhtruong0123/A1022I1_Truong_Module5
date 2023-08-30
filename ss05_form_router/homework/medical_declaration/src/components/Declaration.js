@@ -112,7 +112,7 @@ export function Declaration() {
                             <Field type='checkbox' className='form-check-input' id='insurance' name='insurance'/>
                         </div>
                         
-                        <h4>Địa chỉ liên lạc tại Việt Nam</h4>
+                        <h5 className='mb-3'>Địa chỉ liên lạc tại Việt Nam</h5>
 
                         <div className='mb-3'>
                             <label htmlFor='province' className='form-label'>Tỉnh thành</label>
@@ -144,10 +144,10 @@ export function Declaration() {
                             <ErrorMessage name="email" className="form-err" component='span'></ErrorMessage>
                         </div>
 
-                        <h4>Trong vòng 14 ngày qua, Anh/ Chị có đến quốc gia/ vùng lãnh thổ nào?</h4>
+                        <h5 className='mb-3'>Trong vòng 14 ngày qua, Anh/ Chị có đến quốc gia/ vùng lãnh thổ nào?</h5>
                         <Field as='textarea' className='form-control' name='area' />
 
-                        <h4>Trong vòng 14 ngày qua, Anh/ Chị có thấy xuất hiện dấu hiệu nào sau đây không?</h4>
+                        <h5 className='mb-3'>Trong vòng 14 ngày qua, Anh/ Chị có thấy xuất hiện dấu hiệu nào sau đây không?</h5>
                         <div className='mb-3'>
                             <div className='form-check'>
                                 <Field type='checkbox' className='form-check-input' name='signal' value='Sốt' />
@@ -175,7 +175,7 @@ export function Declaration() {
                             </div>
                         </div>
 
-                        <h4>Trong vòng 14 ngày qua, Anh/ Chị có tiếp súc với?</h4>
+                        <h5 className='mb-3'>Trong vòng 14 ngày qua, Anh/ Chị có tiếp súc với?</h5>
                         <div className='mb-3'>
                             <div className='form-check'>
                                 <Field type='checkbox' className='form-check-input' name='contact'
