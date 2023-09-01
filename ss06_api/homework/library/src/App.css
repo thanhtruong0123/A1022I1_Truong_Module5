@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table-container {
+  width: 100%; /* Đặt chiều rộng cố định cho phần tử bao bọc */
+  text-align: center; /* Căn giữa theo chiều ngang */
+}

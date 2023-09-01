@@ -11,7 +11,7 @@ export function StudentList() {
 
     const getAll = async () => {
         const result = await studentService.getAll();
-       setStudents(result);
+        setStudents(result);
     };
     return (
         <>

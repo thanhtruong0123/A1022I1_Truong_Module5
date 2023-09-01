@@ -46,7 +46,7 @@ export function StudentCreate() {
                     }
                     onSubmit={(values, {setSubmitting}) => {
                         //Call
-                       addStudent(values);
+                        addStudent(values);
                         setSubmitting(false);
                     }}
                 >
