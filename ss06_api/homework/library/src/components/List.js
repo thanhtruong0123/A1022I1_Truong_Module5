@@ -4,12 +4,18 @@ import '../App.css';
 import { PencilSquare, TrashFill, PlusCircleFill } from 'react-bootstrap-icons'
 import { CreateModal } from "./CreateModal";
 import { RemoveBook } from "./Delete";
+import { UpdateModal } from "./Update";
 
 export function Book() {
     const [books, setBooks] = useState([]);
     const [showModalCreate, setShowModalCreate] = useState(false);
     const [showModalDelete, setShowModalDelete] = useState(false);
-    const [actionId, setActionId] = useState(0);
+    const [showModalUpdate, setShowModalUpdate] = useState(false);
+    const [actionBook, setActionBook] = useState({
+        id: 0,
+        title: "",
+        quantity: 0,
+    });
 
     useEffect(() => {
         getAll();
@@ -22,12 +28,22 @@ export function Book() {
 
     const booksAfterCreate = (newBook) => {
         setBooks([...books, newBook]);
-    }
-
+    };
+    
     const booksAfterDelete = (deleteId) => {
         const booksAfterDelete = books.filter(book => book.id !== deleteId);
         setBooks(booksAfterDelete);
-    }
+    };
+
+    const booksAfterUpdate = (editBook) => {
+        const booksAfterUpdate = books.map((book) => {
+            if (book.id === editBook.id) {
+                return editBook;
+            }
+            return book;
+        });
+        setBooks(booksAfterUpdate);
+    };
 
     return (
         <>
@@ -58,7 +74,16 @@ export function Book() {
                                 <td>{book.title}</td>
                                 <td>{book.quantity}</td>
                                 <td>
-                                    <button type='button' className="btn btn-primary" style={{ marginRight: "10px" }}>
+                                    <button 
+                                        type='button' 
+                                        className="btn btn-primary" 
+                                        style={{ marginRight: "10px" }}
+                                        onClick={() => {
+                                            setShowModalUpdate(true);
+                                            setActionBook(book);
+                                            // console.log(book);
+                                        }}
+                                    >
                                         <PencilSquare />
                                     </button>
                                     <button
@@ -66,7 +91,7 @@ export function Book() {
                                         className="btn btn-danger"
                                         onClick={() => {
                                             setShowModalDelete(true);
-                                            setActionId(book.id);
+                                            setActionBook(book);
                                         }}
                                     >
                                         <TrashFill />
@@ -79,7 +104,8 @@ export function Book() {
             </table>
 
             <CreateModal showModal={showModalCreate} setShowModal={setShowModalCreate} booksAfterCreate={booksAfterCreate} />
-            <RemoveBook showModal={showModalDelete} setShowModal={setShowModalDelete} booksAfterDelete={booksAfterDelete} deleteId={actionId} />
+            <RemoveBook showModal={showModalDelete} setShowModal={setShowModalDelete} booksAfterDelete={booksAfterDelete} deleteId={actionBook.id} />
+            <UpdateModal showModal={showModalUpdate} setShowModal={setShowModalUpdate} booksAfterUpdate={booksAfterUpdate} editBook={actionBook} />
         </>
     )
 }

@@ -1,32 +1,37 @@
-import { Button, Modal } from "react-bootstrap";
 import { Field, Form, Formik } from "formik";
+import { Button, Modal } from "react-bootstrap";
 import * as bookService from "../service/BookService";
 
-export function CreateModal({ showModal, setShowModal, booksAfterCreate }) {
-    const addBook = async (values) => {
-        const newBook = await bookService.createNewBook(values);
+export function UpdateModal({ showModal, setShowModal, booksAfterUpdate, editBook }) {
+    const updateBook = async (values) => {
+        const bookAfterEdit = await bookService.updateBook(editBook.id, values);
         setShowModal(false);
-        booksAfterCreate(newBook);
+        booksAfterUpdate(bookAfterEdit);
     }
 
     return (
         <>
             <Formik
                 initialValues={{
-                    title: "",
-                    quantity: 0
+                    id: editBook.id,
+                    title: editBook.title,
+                    quantity: editBook.quantity
                 }}
                 onSubmit={ (values, { resetForm }) => {
-                    addBook(values);
+                    updateBook(values);
                     resetForm();
                 }}
             >
-                <Form id="formBook">
+                <Form id="form-update">
                     <Modal show={showModal} onHide={() => setShowModal(false)}>
                         <Modal.Header closeButton>
-                            <Modal.Title>Add New Book</Modal.Title>
+                            <Modal.Title>Update Book</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
+                            <div className="mb-3">
+                                <label className="form-label">ID</label>
+                                <Field type="number" className='form-control' name="id" />
+                            </div>
                             <div className="mb-3">
                                 <label className="form-label">Title</label>
                                 <Field type='text' className='form-control' name='title' />
@@ -38,7 +43,7 @@ export function CreateModal({ showModal, setShowModal, booksAfterCreate }) {
                         </Modal.Body>
                         <Modal.Footer>
                             <Button type='button' className="btn btn-secondary" onClick={() => setShowModal(false)}>Close</Button>
-                            <Button form="formBook" type='submit' className="btn btn-primary">Add Book</Button>
+                            <Button form='form-update' type='submit' className="btn btn-primary">Update</Button>
                         </Modal.Footer>
                     </Modal>
                 </Form>
