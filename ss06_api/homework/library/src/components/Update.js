@@ -12,8 +12,8 @@ export function UpdateModal({ showModal, setShowModal, booksAfterUpdate, editBoo
     return (
         <>
             <Formik
+                enableReinitialize={true}
                 initialValues={{
-                    id: editBook.id,
                     title: editBook.title,
                     quantity: editBook.quantity
                 }}
@@ -28,10 +28,6 @@ export function UpdateModal({ showModal, setShowModal, booksAfterUpdate, editBoo
                             <Modal.Title>Update Book</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <div className="mb-3">
-                                <label className="form-label">ID</label>
-                                <Field type="number" className='form-control' name="id" />
-                            </div>
                             <div className="mb-3">
                                 <label className="form-label">Title</label>
                                 <Field type='text' className='form-control' name='title' />

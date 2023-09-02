@@ -21,7 +21,7 @@ export function CreateModal({ showModal, setShowModal, booksAfterCreate }) {
                     resetForm();
                 }}
             >
-                <Form id="formBook">
+                <Form id="form-create">
                     <Modal show={showModal} onHide={() => setShowModal(false)}>
                         <Modal.Header closeButton>
                             <Modal.Title>Add New Book</Modal.Title>
@@ -38,7 +38,7 @@ export function CreateModal({ showModal, setShowModal, booksAfterCreate }) {
                         </Modal.Body>
                         <Modal.Footer>
                             <Button type='button' className="btn btn-secondary" onClick={() => setShowModal(false)}>Close</Button>
-                            <Button form="formBook" type='submit' className="btn btn-primary">Add Book</Button>
+                            <Button form="form-create" type='submit' className="btn btn-primary">Add Book</Button>
                         </Modal.Footer>
                     </Modal>
                 </Form>
