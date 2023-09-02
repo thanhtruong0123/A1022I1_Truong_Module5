@@ -9,7 +9,7 @@ export function UpdateModal({ showModal, setShowModal, booksAfterUpdate, editBoo
         const bookAfterEdit = await bookService.updateBook(editBook.id, values);
         setShowModal(false);
         booksAfterUpdate(bookAfterEdit);
-        toast.success("Cập nhật thành công");
+        toast.success("Update successfully");
     }
 
     return (

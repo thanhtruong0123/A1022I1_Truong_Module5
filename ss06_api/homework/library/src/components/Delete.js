@@ -7,7 +7,7 @@ export function RemoveBook({ showModal, setShowModal, booksAfterDelete, deleteId
         await bookService.removeBook(deleteId);
         setShowModal(false);
         booksAfterDelete(deleteId);
-        toast.success("Xóa thành công");
+        toast.success("Delete successfully");
     }
 
     return (

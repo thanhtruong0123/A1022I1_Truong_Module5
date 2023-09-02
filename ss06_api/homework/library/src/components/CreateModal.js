@@ -9,7 +9,7 @@ export function CreateModal({ showModal, setShowModal, booksAfterCreate }) {
         const newBook = await bookService.createNewBook(values);
         setShowModal(false);
         booksAfterCreate(newBook);
-        toast.success("Thêm mới thành công");
+        toast.success("Create successfully");
     }
 
     return (
