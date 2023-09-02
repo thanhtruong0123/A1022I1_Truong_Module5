@@ -8,3 +8,7 @@
   width: 100%; /* Đặt chiều rộng cố định cho phần tử bao bọc */
   text-align: center; /* Căn giữa theo chiều ngang */
 }
+
+.form-error {
+  color: red;
+}

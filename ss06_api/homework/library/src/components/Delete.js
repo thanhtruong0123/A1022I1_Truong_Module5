@@ -1,11 +1,13 @@
 import { Button, Modal } from "react-bootstrap";
 import * as bookService from "../service/BookService";
+import { toast } from "react-toastify";
 
 export function RemoveBook({ showModal, setShowModal, booksAfterDelete, deleteId }) {
     const deleteBook = async () => {
         await bookService.removeBook(deleteId);
         setShowModal(false);
         booksAfterDelete(deleteId);
+        toast.success("Xóa thành công");
     }
 
     return (

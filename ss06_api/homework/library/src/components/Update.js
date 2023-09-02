@@ -1,12 +1,15 @@
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import { Button, Modal } from "react-bootstrap";
 import * as bookService from "../service/BookService";
+import * as Yup from "yup";
+import { toast } from "react-toastify";
 
 export function UpdateModal({ showModal, setShowModal, booksAfterUpdate, editBook }) {
     const updateBook = async (values) => {
         const bookAfterEdit = await bookService.updateBook(editBook.id, values);
         setShowModal(false);
         booksAfterUpdate(bookAfterEdit);
+        toast.success("Cập nhật thành công");
     }
 
     return (
@@ -17,6 +20,15 @@ export function UpdateModal({ showModal, setShowModal, booksAfterUpdate, editBoo
                     title: editBook.title,
                     quantity: editBook.quantity
                 }}
+                validationSchema={
+                    Yup.object({
+                        title: Yup.string()
+                            .required("Title is required"),
+                        quantity: Yup.number()
+                            .required("Quantity is required")
+                            .min(1)
+                    })
+                }
                 onSubmit={ (values, { resetForm }) => {
                     updateBook(values);
                     resetForm();
@@ -31,10 +43,12 @@ export function UpdateModal({ showModal, setShowModal, booksAfterUpdate, editBoo
                             <div className="mb-3">
                                 <label className="form-label">Title</label>
                                 <Field type='text' className='form-control' name='title' />
+                                <ErrorMessage className="form-error" name='title' component='span'></ErrorMessage>
                             </div>
                             <div className="mb-3">
                                 <label className="form-label">Quantity</label>
                                 <Field type='number' className='form-control' name='quantity' />
+                                <ErrorMessage className="form-error" name='quantity' component='span'></ErrorMessage>
                             </div>
                         </Modal.Body>
                         <Modal.Footer>
