@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AlarmFill, AspectRatioFill, PencilSquare, PeopleFill, TrashFill } from "react-bootstrap-icons";
+import { UpdateServiceModal } from "./Update";
 
 const serviceData = [
     {
@@ -46,6 +47,16 @@ const serviceData = [
 
 export function ServiceList() {
     const [serviceList, setServiceList] = useState(serviceData);
+    const [showUpdateModal, setShowUpdateModal] = useState(false);
+    const [actionService, setActionService] = useState({
+        name: "",
+        usageArea: 0,
+        rentalCost: 0,
+        maxGuest: 0,
+        rentalType: "",
+        otherConvenient: "",
+        imgURL: ""
+    })
 
     return (
         <>
@@ -61,7 +72,15 @@ export function ServiceList() {
                                     style={{ height: "200px" }}
                                 />
                                 <div className="position-absolute top-0 end-0 p-3">
-                                    <button type="button" className="btn btn-outline-light" style={{marginRight: "10px"}}>
+                                    <button
+                                        type="button" 
+                                        className="btn btn-outline-light" 
+                                        style={{marginRight: "10px"}}
+                                        onClick={() => {
+                                            setShowUpdateModal(true);
+                                            setActionService(service);
+                                        }}
+                                    >
                                         <PencilSquare />
                                     </button>
                                     <button type="button" className="btn btn-outline-light">
@@ -88,6 +107,7 @@ export function ServiceList() {
                     ))}
                 </div>
             </div>
+            <UpdateServiceModal showModal={showUpdateModal} setShowModal={setShowUpdateModal} editService={actionService} />
         </>
     )
 }
