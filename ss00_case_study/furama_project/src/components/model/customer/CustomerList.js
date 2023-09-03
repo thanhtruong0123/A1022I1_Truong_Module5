@@ -2,6 +2,7 @@ import { useState } from "react";
 import { PencilFill, PlusCircleFill, TrashFill } from "react-bootstrap-icons";
 import { UpdateCustomerModal } from "./UpdateCustomer";
 import { CreateCustomerModal } from "./CreateCustomer";
+import { RemoveCustomerModal } from "./RemoveCustomer";
 
 const customerData = [
     {
@@ -50,6 +51,7 @@ export function CustomerList() {
     const [customers, setCustomer] = useState(customerData);
     const [showCreateModal, setShowCreateModal] = useState(false);
     const [showUpdateModal, setShowUpdateModal] = useState(false);
+    const [showRemoveModal, setShowRemoveModal] = useState(false);
     const [actionCustomer, setActionCustomer] = useState({
         id: 0,
         name: "",
@@ -113,6 +115,8 @@ export function CustomerList() {
                                     type="button"
                                     className="btn btn-danger"
                                     onClick={() => {
+                                        setShowRemoveModal(true);
+                                        setActionCustomer(customer);
                                     }}
                                 >
                                     <TrashFill />
@@ -125,6 +129,7 @@ export function CustomerList() {
 
             <UpdateCustomerModal showModal={showUpdateModal} setShowModal={setShowUpdateModal} editCustomer={actionCustomer} />
             <CreateCustomerModal showModal={showCreateModal} setShowModal={setShowCreateModal} />
+            <RemoveCustomerModal showModal={showRemoveModal} setShowModal={setShowRemoveModal} removeId={actionCustomer.id} />
         </>
     )
 }
