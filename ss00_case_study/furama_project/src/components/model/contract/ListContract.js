@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { PlusCircleFill } from "react-bootstrap-icons";
+import { CreateContractModal } from "./CreateContract";
 
 const contractData = [
     {
@@ -87,6 +88,8 @@ export function ContractList() {
                     ))}
                 </tbody>
             </table>
+
+            <CreateContractModal showModal={showCreateModal} setShowModal={setShowCreateModal} />
         </>
     )
 }
