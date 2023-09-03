@@ -62,62 +62,60 @@ export function ServiceList() {
 
     return (
         <>
-            <div className="container">
-                <div className="header mb-3 mt-3">
-                    <h2>Service</h2>
-                    <button
-                        type="button"
-                        className="btn btn-success"
-                        onClick={() => setShowCreateModal(true)}
-                    >
-                        New &nbsp;<PlusCircleFill />
-                    </button>
-                </div>
-                <div className="row">
-                    {serviceList.map((service, key) => (
-                        <div className="col-md-4 mb-4" key={key}>
-                            <div className="card position-relative" style={{width: "18rem"}} >
-                                <img
-                                    src={service.imgURL}
-                                    class="card-img-top"
-                                    alt={service.imgURL}
-                                    style={{ height: "200px" }}
-                                />
-                                <div className="position-absolute top-0 end-0 p-3">
-                                    <button
-                                        type="button" 
-                                        className="btn btn-outline-light" 
-                                        style={{marginRight: "10px"}}
-                                        onClick={() => {
-                                            setShowUpdateModal(true);
-                                            setActionService(service);
-                                        }}
-                                    >
-                                        <PencilSquare />
-                                    </button>
-                                    <button type="button" className="btn btn-outline-light">
-                                        <TrashFill />
-                                    </button>
-                                </div>
-                                <div className="card-body">
-                                    <h5 className="card-title">{service.name}</h5>
-                                    <p className="card-text">
-                                        <i>It's our honor to serve you</i>
-                                    </p>
-                                    <p className="card-text">
-                                        <AspectRatioFill /> &nbsp;
-                                        {service.usageArea} &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <PeopleFill /> &nbsp;
-                                        {service.maxGuest} &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <AlarmFill /> &nbsp;
-                                        {service.rentalType}
-                                    </p>
-                                    <button className="btn btn-grad">More</button>
-                                </div>
+            <div className="header mb-3 mt-3">
+                <h2>Service</h2>
+                <button
+                    type="button"
+                    className="btn btn-success"
+                    onClick={() => setShowCreateModal(true)}
+                >
+                    New &nbsp;<PlusCircleFill />
+                </button>
+            </div>
+            <div className="row">
+                {serviceList.map((service, key) => (
+                    <div className="col-md-4 mb-4" key={key}>
+                        <div className="card position-relative" style={{width: "18rem"}} >
+                            <img
+                                src={service.imgURL}
+                                class="card-img-top"
+                                alt={service.imgURL}
+                                style={{ height: "200px" }}
+                            />
+                            <div className="position-absolute top-0 end-0 p-3">
+                                <button
+                                    type="button" 
+                                    className="btn btn-outline-light" 
+                                    style={{marginRight: "10px"}}
+                                    onClick={() => {
+                                        setShowUpdateModal(true);
+                                        setActionService(service);
+                                    }}
+                                >
+                                    <PencilSquare />
+                                </button>
+                                <button type="button" className="btn btn-outline-light">
+                                    <TrashFill />
+                                </button>
+                            </div>
+                            <div className="card-body">
+                                <h5 className="card-title">{service.name}</h5>
+                                <p className="card-text">
+                                    <i>It's our honor to serve you</i>
+                                </p>
+                                <p className="card-text">
+                                    <AspectRatioFill /> &nbsp;
+                                    {service.usageArea} &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <PeopleFill /> &nbsp;
+                                    {service.maxGuest} &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <AlarmFill /> &nbsp;
+                                    {service.rentalType}
+                                </p>
+                                <button className="btn btn-grad">More</button>
                             </div>
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ))}
             </div>
             <UpdateServiceModal showModal={showUpdateModal} setShowModal={setShowUpdateModal} editService={actionService} />
             <CreateServiceModal showModal={showCreateModal} setShowModal={setShowCreateModal} />
