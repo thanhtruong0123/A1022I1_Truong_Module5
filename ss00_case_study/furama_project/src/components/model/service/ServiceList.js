@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { AlarmFill, AspectRatioFill, PencilSquare, PeopleFill, TrashFill } from "react-bootstrap-icons";
+import { AlarmFill, AspectRatioFill, PencilSquare, PeopleFill, PlusCircleFill, TrashFill } from "react-bootstrap-icons";
 import { UpdateServiceModal } from "./Update";
+import { CreateServiceModal } from "./Create";
 
 const serviceData = [
     {
@@ -47,6 +48,7 @@ const serviceData = [
 
 export function ServiceList() {
     const [serviceList, setServiceList] = useState(serviceData);
+    const [showCreateModal, setShowCreateModal] = useState(false);
     const [showUpdateModal, setShowUpdateModal] = useState(false);
     const [actionService, setActionService] = useState({
         name: "",
@@ -61,6 +63,16 @@ export function ServiceList() {
     return (
         <>
             <div className="container">
+                <div className="header mb-3 mt-3">
+                    <h2>Service</h2>
+                    <button
+                        type="button"
+                        className="btn btn-success"
+                        onClick={() => setShowCreateModal(true)}
+                    >
+                        New &nbsp;<PlusCircleFill />
+                    </button>
+                </div>
                 <div className="row">
                     {serviceList.map((service, key) => (
                         <div className="col-md-4 mb-4" key={key}>
@@ -108,6 +120,7 @@ export function ServiceList() {
                 </div>
             </div>
             <UpdateServiceModal showModal={showUpdateModal} setShowModal={setShowUpdateModal} editService={actionService} />
+            <CreateServiceModal showModal={showCreateModal} setShowModal={setShowCreateModal} />
         </>
     )
 }

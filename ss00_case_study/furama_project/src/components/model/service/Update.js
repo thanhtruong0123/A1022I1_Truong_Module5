@@ -48,15 +48,15 @@ export function UpdateServiceModal({ showModal, setShowModal, editService }) {
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Rental Type</label>
-                            <Field type="number" className="form-control" name="rentalType" />
+                            <Field type="text" className="form-control" name="rentalType" />
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Other Convenient</label>
-                            <Field type="number" className="form-control" name="otherConvenient" />
+                            <Field type="text" className="form-control" name="otherConvenient" />
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Image URL</label>
-                            <Field type="number" className="form-control" name="imgURL" />
+                            <Field type="text" className="form-control" name="imgURL" />
                         </div>
                     </Modal.Body>
                     <Modal.Footer>
