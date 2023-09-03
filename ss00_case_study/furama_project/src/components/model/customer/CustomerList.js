@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { PlusCircleFill } from "react-bootstrap-icons";
+import { PencilFill, PlusCircleFill, TrashFill } from "react-bootstrap-icons";
+import { UpdateCustomerModal } from "./UpdateCustomer";
 
 const customerData = [
     {
@@ -47,6 +48,17 @@ const customerData = [
 export function CustomerList() {
     const [customers, setCustomer] = useState(customerData);
     const [showCreateModal, setShowCreateModal] = useState(false);
+    const [showUpdateModal, setShowUpdateModal] = useState(false);
+    const [actionCustomer, setActionCustomer] = useState({
+        id: 0,
+        name: "",
+        customerType: "",
+        dateOfBirth: "",
+        gender: "",
+        idCard: "",
+        phone: "",
+        email: ""
+    })
 
     return (
         <>  
@@ -71,6 +83,7 @@ export function CustomerList() {
                     <th scope="col">ID card</th>
                     <th scope="col">Phone number</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Action</th>
                 </thead>
                 <tbody>
                     {customers.map((customer, key) => (
@@ -83,10 +96,33 @@ export function CustomerList() {
                             <td>{customer.idCard}</td>
                             <td>{customer.phone}</td>
                             <td>{customer.email}</td>
+                            <td>
+                                <button
+                                    type="button"
+                                    className="btn btn-warning"
+                                    style={{marginRight: "10px"}}
+                                    onClick={() => {
+                                        setShowUpdateModal(true);
+                                        setActionCustomer(customer);
+                                    }}
+                                >
+                                    <PencilFill />
+                                </button>
+                                <button
+                                    type="button"
+                                    className="btn btn-danger"
+                                    onClick={() => {
+                                    }}
+                                >
+                                    <TrashFill />
+                                </button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+
+            <UpdateCustomerModal showModal={showUpdateModal} setShowModal={setShowUpdateModal} editCustomer={actionCustomer} />
         </>
     )
 }

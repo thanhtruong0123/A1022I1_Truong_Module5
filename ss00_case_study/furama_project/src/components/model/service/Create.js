@@ -28,7 +28,7 @@ export function CreateServiceModal({ showModal, setShowModal }) {
                         <Modal.Title>Create Service</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                    <div className="mb-3">
+                        <div className="mb-3">
                             <label className="form-label">Service Name</label>
                             <Field type="text" className="form-control" name="name" />
                         </div>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AlarmFill, AspectRatioFill, PencilSquare, PeopleFill, PlusCircleFill, TrashFill } from "react-bootstrap-icons";
 import { UpdateServiceModal } from "./Update";
 import { CreateServiceModal } from "./Create";
+import { RemoveServiceModal } from "./RemoveService";
 
 const serviceData = [
     {
@@ -50,6 +51,7 @@ export function ServiceList() {
     const [serviceList, setServiceList] = useState(serviceData);
     const [showCreateModal, setShowCreateModal] = useState(false);
     const [showUpdateModal, setShowUpdateModal] = useState(false);
+    const [showRemoveModal, setShowRemoveModal] = useState(false);
     const [actionService, setActionService] = useState({
         name: "",
         usageArea: 0,
@@ -94,7 +96,14 @@ export function ServiceList() {
                                 >
                                     <PencilSquare />
                                 </button>
-                                <button type="button" className="btn btn-outline-light">
+                                <button
+                                    type="button"
+                                    className="btn btn-outline-light"
+                                    onClick={() => {
+                                        setShowRemoveModal(true);
+                                        setActionService(service);
+                                    }}
+                                >
                                     <TrashFill />
                                 </button>
                             </div>
@@ -119,6 +128,7 @@ export function ServiceList() {
             </div>
             <UpdateServiceModal showModal={showUpdateModal} setShowModal={setShowUpdateModal} editService={actionService} />
             <CreateServiceModal showModal={showCreateModal} setShowModal={setShowCreateModal} />
+            <RemoveServiceModal showModal={showRemoveModal} setShowModal={setShowRemoveModal} removeId={actionService.id} />
         </>
     )
 }

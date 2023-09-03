@@ -11,6 +11,7 @@ export function UpdateServiceModal({ showModal, setShowModal, editService }) {
         <Formik
             enableReinitialize={true}
             initialValues={{
+                id: editService.id,
                 name: editService.name,
                 usageArea: editService.usageArea,
                 rentalCost: editService.rentalCost,
