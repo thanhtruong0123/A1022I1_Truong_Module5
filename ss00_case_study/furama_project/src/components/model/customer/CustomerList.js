@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { PencilFill, PlusCircleFill, TrashFill } from "react-bootstrap-icons";
 import { UpdateCustomerModal } from "./UpdateCustomer";
+import { CreateCustomerModal } from "./CreateCustomer";
 
 const customerData = [
     {
@@ -123,6 +124,7 @@ export function CustomerList() {
             </table>
 
             <UpdateCustomerModal showModal={showUpdateModal} setShowModal={setShowUpdateModal} editCustomer={actionCustomer} />
+            <CreateCustomerModal showModal={showCreateModal} setShowModal={setShowCreateModal} />
         </>
     )
 }
